@@ -7,6 +7,8 @@ google-cloud-vision==0.41.0
 googleapis-common-protos==1.51.0
 grpcio==1.26.0
 idna==2.8
+numpy==1.18.1
+opencv-python==4.1.2.30
 protobuf==3.11.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
