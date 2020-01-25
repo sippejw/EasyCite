@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/EasyCite.iml" filepath="$PROJECT_DIR$/.idea/EasyCite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easycite.iml" filepath="$PROJECT_DIR$/easycite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/easycite_android.iml" filepath="$PROJECT_DIR$/android/easycite_android.iml" />
     </modules>
   </component>
 </project>
