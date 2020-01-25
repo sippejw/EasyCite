@@ -1,4 +1,4 @@
-name: easycite
+name: mobile
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_database: ^3.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -1,4 +1,4 @@
-package com.example.easycite
+package com.example.mobile
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

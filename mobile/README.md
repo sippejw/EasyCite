@@ -1,4 +1,4 @@
-# easycite
+# mobile
 
 A new Flutter project.
 

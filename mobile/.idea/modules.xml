@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/easycite.iml" filepath="$PROJECT_DIR$/easycite.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/easycite_android.iml" filepath="$PROJECT_DIR$/android/easycite_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobile.iml" filepath="$PROJECT_DIR$/mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/mobile_android.iml" filepath="$PROJECT_DIR$/android/mobile_android.iml" />
     </modules>
   </component>
 </project>
