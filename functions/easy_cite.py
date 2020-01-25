@@ -1,13 +1,19 @@
 from google.cloud import vision
 import io
-#image similarity
 
+#image similarity
+#
+#
+#input an image output a similarity score
 def textbook_recognition():
     pass
 
 #google vision api
-def quotation_maker():
-    path = './math1.jpg'
+#currently just prints the text and returns the text object
+#
+#takes in a path to an image and returns the text object
+def quotation_maker(image_path):
+    path = image_path
 
     client = vision.ImageAnnotatorClient()
 
@@ -28,4 +34,6 @@ def quotation_maker():
 
         print('bounds: {}'.format(','.join(vertices)))
 
-quotation_maker()
+    return texts
+
+quotation_maker('../math1.jpg')
