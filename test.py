@@ -1,7 +1,6 @@
 from google.cloud import vision
 
-image_uri = 'gs://cloud-vision-codelab/otter_crossing.jpg'
-
+image_uri = "gs://digital-ethos-200423.appspot.com/tmp_quotes/IMG_0640.JPG" 
 client = vision.ImageAnnotatorClient()
 image = vision.types.Image()
 image.source.image_uri = image_uri
