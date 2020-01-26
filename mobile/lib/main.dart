@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'EasyCite',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -38,6 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                _booksRef.set(null);
+              },
+            ),
+        ]
       ),
       body: StreamBuilder(
         stream: _booksRef.onValue,
@@ -83,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           } else {
-            return Text("No data");
+            return Center(child: Text("No books yet", style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),));
           }
         },
       ),

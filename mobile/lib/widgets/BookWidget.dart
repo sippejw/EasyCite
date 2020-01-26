@@ -3,7 +3,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/models/bookModel.dart';
-import 'package:mobile/routes/citationUpload.dart';
+import 'package:mobile/routes/bookDetail.dart';
 
 class BookWidget extends StatelessWidget {
   
@@ -21,7 +21,7 @@ class BookWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CitationUpload(book: book)),
+          MaterialPageRoute(builder: (context) => BookDetail(book: book)),
         );
       },
       child: Column(

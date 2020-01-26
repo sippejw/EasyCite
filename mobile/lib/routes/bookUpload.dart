@@ -61,7 +61,7 @@ class _BookUploadState extends State<BookUpload> {
             _image == null
                 ? RaisedButton(
                   onPressed: takePhoto,
-                  child: Text('Take photo!'),
+                  child: Text('Take photo'),
                 )
                 : Column(children: <Widget>[
                     Image(image: FileImage(_image)),
