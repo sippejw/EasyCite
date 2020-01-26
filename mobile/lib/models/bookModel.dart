@@ -1,11 +1,13 @@
 class SmallBook {
   String title;
+  String isbn;
   String cover_image;
   
-  SmallBook({this.title,  this.cover_image});
+  SmallBook({this.title, this.isbn, this.cover_image});
 
-  SmallBook.fromJson(Map<String, dynamic> json)
+  SmallBook.fromJson(Map<String, dynamic> json, String isbn)
       : title = json['title'],
+        isbn = isbn,
         cover_image = json['cover_image'];
 }
 
@@ -28,10 +30,11 @@ class SmallBook {
         year_published = json ['year_published'];
 } */
 
+/* 
 class Author {
   String first_name;
   String last_name;
-}
+} */
 
 class BookList{
   List<SmallBook> bookList;

@@ -49,23 +49,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
             var library = [];
-            // List<Book> library = List<Book>();
 
             if (map != null) {
               map.forEach((i, v) {
                 // var bookRef = FirebaseDatabase.instance.reference().child('catalog/' + i);
                 
                 // bookRef.once().then((DataSnapshot bookSnap) {
-                  var book = SmallBook.fromJson(new Map<String, dynamic>.from(v));
+                  var book = SmallBook.fromJson(new Map<String, dynamic>.from(v), i);
                   library.add(book);
                 // });
               });
             }
 
-            print(library);
-
             int bookCount = library.length;
-
 
             return Container(
               child: Padding(
