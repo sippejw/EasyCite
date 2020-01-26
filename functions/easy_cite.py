@@ -4,6 +4,8 @@ import cv2
 
 from PIL import Image
 
+import re
+
 import time
 import datetime
 
@@ -12,33 +14,6 @@ from firebase import Firebase
 
 import os
 
-#image similarity
-#
-#
-#input an image output an ISBN as an integer
-def textbook_recognition(imgA,imgB):
-    size = 300	,200
-
-    #force dimensions to match
-    imageA = Image.open(imgA)
-    imageB = Image.open(imgB)
-    
-    im_resizedA = imageA.resize(size, Image.ANTIALIAS)
-    im_resizedA.save("my_image_resized.png", "PNG")
-    im_resizedA = np.array(im_resizedA)
-    
-
-    im_resizedB = imageB.resize(size, Image.ANTIALIAS)
-    im_resizedB = np.array(im_resizedB)
-
-
-    # the 'Mean Squared Error' between the two images is the
-    # sum of the squared difference between the two images;
-    # NOTE: the two images must have the same dimension
-    err = np.sum((im_resizedA.astype("float") - im_resizedB.astype("float")) ** 2)
-    err /= float(im_resizedA.shape[0] * im_resizedA.shape[1])
-
-    return err
 
 from google.cloud import vision
 import io
@@ -64,6 +39,28 @@ def quotation_maker(image_path):
 
 quotation_maker('../images/humanrights1.JPG')
 
+
+#image similarity
+#
+#
+#input an image output an ISBN as an integer
+def textbook_recognition(image_path):
+    regex = r'978(?:-?\d){10}'
+
+    text_desc = quotation_maker(image_path)
+
+    pattern = re.compile(regex,re.UNICODE)
+
+    matches = []
+    for match in pattern.findall(text_desc):
+        print('match: ',match)
+        match_stripped = match.replace('-', '')
+        matches.append(match_stripped)
+
+    print(matches)
+    isbn = int(matches[0])
+    return isbn
+
 config = {"apiKey"		: "AIzaSyBvzqpTNHhk-aP0ROFyspt_PV0y5P6Fho0"
          ,"authDomain"		: "digital-ethos-200423.firebaseapp.com"
          ,"databaseURL"		: "https://digital-ethos-200423.firebaseio.com"
@@ -85,7 +82,6 @@ for key, value in zip(db.child("catalog").get().val().keys(),db.child("catalog")
     #print(entry_image_path[37:])
     storage.child(entry_image_path[37:]).download('../final_images/' + key + '.jpg', None)
 
-
 fimage_directory = os.fsencode('../final_images/')
 final_images = []
 for fp in os.listdir(fimage_directory):
@@ -97,7 +93,6 @@ print("final_images-------\n",final_images,"\n--------")
 #lower to make the threshold more strict
 THRESHOLD = 16000
 
-db.child("uploads").remove()
 
 def stream_handler(message):
     print(message)
@@ -116,21 +111,8 @@ def stream_handler(message):
             storage.child(image_path_storage).download("downloaded.jpg", None)
 
             errors = []
-            #cycle through all final images
-            for fp in final_images:
-                #append the resulting error to the list of errors
-                errors.append(textbook_recognition("./downloaded.jpg",'../final_images/' + fp))
-
-            min_index = np.argmin(errors) #get the index of the minimum error
-            print('min error: ', errors[min_index])
-            if errors[min_index] > 16000:
-                print("------\nDOESN'T MEET THRESHOLD\n--------")
-                pass
-            print(errors)
-            #print('min_index',min_index)
-
-            isbn = final_images[min_index]
-            isbn = isbn[:isbn.find('.jpg')]
+            #find isbn using function
+            isbn = textbook_recognition('./downloaded.jpg')
 
             catalog_val = db.child("catalog").child(isbn).get().val()
 
@@ -154,9 +136,11 @@ def stream_handler(message):
                 citation_counter = max(cites.values())+1
             except:
                 citation_counter = 0
-            data = {citation_counter:description}
+            data = {citation_counter:{"citation_string":description,
+                                      "page_number":message_data["page_number"]}
+                   }
 
             db.child("library").child(isbn).child("citations").set(data)
 
-
+db.child("uploads").remove()
 my_stream = db.child("uploads").stream(stream_handler)
