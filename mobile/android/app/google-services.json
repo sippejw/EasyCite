@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "30458395453",
+    "firebase_url": "https://digital-ethos-200423.firebaseio.com",
+    "project_id": "digital-ethos-200423",
+    "storage_bucket": "digital-ethos-200423.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30458395453:android:095f27e67c4cfb44ac6354",
+        "android_client_info": {
+          "package_name": "com.wohlbruck.easycite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30458395453-n78pcs0nemr1scrdvfki1avpsf0tp5bn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbJxm1OHpbhDjLvL1NBB_f0NwBSg__5k4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30458395453-os417atjfj2d3a8fplicf0v2spt814cv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
