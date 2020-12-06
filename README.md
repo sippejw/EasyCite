@@ -1,5 +1,5 @@
 # EasyCite
-Hackathon project for CUHackit at Clemson University. Goal was to create a mobile app for easily citing sources in academic essays.
+Hackathon project for CUHackit at Clemson University. Goal was to create a mobile app for easily citing sources from physical textbooks.
 
 # Results
 Allows you to take a picture of the ISBN of a textbook, and loads metadata into your account's library related to that project.
