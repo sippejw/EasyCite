@@ -32,7 +32,7 @@ pytz==2019.3
 PyWavelets==1.1.1
 requests==2.11.1
 requests-toolbelt==0.7.0
-rsa==4.0
+rsa==4.7
 scikit-image==0.16.2
 scipy==1.4.1
 six==1.14.0
